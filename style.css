@@ -6,7 +6,6 @@
   --text-muted: #64748b;
   --border-line: #e2e8f0;
   --primary: #0f76a8;
-  --primary-dark: #073b5c;
   --badge-bg: #e0f2fe;
   --badge-text: #0369a1;
   --shadow-float: 0 14px 34px rgba(15, 23, 42, 0.08);
@@ -18,17 +17,14 @@ body.dark-mode {
   --bg-soft: #1e293b;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border-line: rgba(148, 163, 184, 0.18);
+  --border-line: rgba(148, 163, 184, 0.2);
   --primary: #38bdf8;
-  --primary-dark: #0284c7;
-  --badge-bg: rgba(56, 189, 248, 0.15);
+  --badge-bg: rgba(56, 189, 248, 0.16);
   --badge-text: #7dd3fc;
   --shadow-float: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -36,6 +32,10 @@ body.dark-mode {
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id], main[id] {
+  scroll-margin-top: 86px;
 }
 
 body {
@@ -58,7 +58,7 @@ img {
   height: auto;
 }
 
-/* ХӨВӨГЧ HEADER */
+/* HEADER */
 .glass-header {
   position: sticky;
   top: 10px;
@@ -66,17 +66,15 @@ img {
   max-width: 1380px;
   width: calc(100% - 24px);
   margin: 10px auto 0;
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-line);
   border-radius: 18px;
   box-shadow: var(--shadow-float);
 }
 
 body.dark-mode .glass-header {
-  background: rgba(15, 23, 42, 0.82);
-  border-color: rgba(56, 189, 248, 0.22);
+  background: rgba(15, 23, 42, 0.86);
 }
 
 .header-wrap {
@@ -104,18 +102,12 @@ body.dark-mode .glass-header {
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  box-shadow: 0 6px 14px rgba(2, 132, 199, 0.3);
-}
-
-.brand-copy {
-  display: flex;
-  flex-direction: column;
 }
 
 .brand-copy strong {
+  display: block;
   font-size: 1.05rem;
   color: var(--primary);
-  line-height: 1.15;
 }
 
 .brand-copy small {
@@ -126,7 +118,6 @@ body.dark-mode .glass-header {
 .top-nav {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 4px;
 }
 
@@ -135,72 +126,36 @@ body.dark-mode .glass-header {
   border-radius: 999px;
   font-size: 0.83rem;
   font-weight: 500;
-  color: var(--text-main);
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.is-active {
-  background-color: var(--badge-bg);
+.nav-link:hover, .nav-link.is-active {
+  background: var(--badge-bg);
   color: var(--badge-text);
   font-weight: 600;
-}
-
-.header-tools {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .pill-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 8px;
+  padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid var(--border-line);
   background: var(--bg-soft);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .pill-knob {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+  background: var(--primary);
 }
 
-.tool-divider {
-  width: 1px;
-  height: 18px;
-  background: var(--border-line);
-}
-
-.view-mini-btns {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.mini-box {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  background: var(--bg-soft);
-}
-
-.mini-box.active {
-  background: var(--badge-bg);
-  color: var(--badge-text);
-}
-
-/* HERO ХЭСЭГ */
+/* HERO */
 .hero-banner {
   position: relative;
   margin-top: -58px;
@@ -208,7 +163,7 @@ body.dark-mode .glass-header {
   background:
     radial-gradient(circle at 75% 42%, rgba(125, 211, 252, 0.42), transparent 45%),
     linear-gradient(105deg, #06253b 0%, #0b4a6f 48%, #1577a8 100%);
-  color: #ffffff;
+  color: #fff;
   overflow: hidden;
 }
 
@@ -255,43 +210,27 @@ body.dark-mode .glass-header {
 }
 
 .btn-hero-primary {
-  display: inline-flex;
-  align-items: center;
   padding: 11px 20px;
   border-radius: 10px;
-  background: #ffffff;
+  background: #fff;
   color: #073b5c;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 10px 24px rgba(2, 12, 27, 0.28);
-  transition: transform 0.2s ease;
-}
-
-.btn-hero-primary:hover {
-  transform: translateY(-2px);
 }
 
 .btn-hero-outline {
-  display: inline-flex;
-  align-items: center;
   padding: 11px 18px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.45);
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: background-color 0.2s ease;
 }
 
-.btn-hero-outline:hover {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-/* БАРУУН ТАЛЫН ТӨХӨӨРӨМЖИЙН ХӨВӨГЧ ХЭСЭГ */
 .hero-visual {
   position: relative;
-  min-height: 270px;
+  min-height: 260px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -300,10 +239,9 @@ body.dark-mode .glass-header {
 .splash-ring {
   position: absolute;
   width: 340px;
-  height: 240px;
+  height: 230px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(224, 242, 254, 0.55) 0%, rgba(56, 189, 248, 0.12) 65%, transparent 75%);
-  filter: blur(6px);
+  background: radial-gradient(circle, rgba(224, 242, 254, 0.55), transparent 72%);
   bottom: 0;
 }
 
@@ -323,18 +261,17 @@ body.dark-mode .glass-header {
 
 .filter-columns span {
   width: 24px;
-  height: 112px;
+  height: 110px;
   border-radius: 10px 10px 4px 4px;
-  background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 100%);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, #f8fafc, #cbd5e1);
 }
 
 .filter-columns span:nth-child(3) {
-  background: linear-gradient(180deg, #64748b 0%, #334155 100%);
+  background: linear-gradient(180deg, #64748b, #334155);
 }
 
 .filter-columns span:nth-child(4) {
-  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  background: linear-gradient(180deg, #60a5fa, #2563eb);
 }
 
 .purifier-unit {
@@ -345,7 +282,7 @@ body.dark-mode .glass-header {
 .unit-main {
   width: 148px;
   height: 165px;
-  background: linear-gradient(160deg, #ffffff 0%, #e2e8f0 100%);
+  background: linear-gradient(160deg, #fff, #e2e8f0);
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -372,16 +309,16 @@ body.dark-mode .glass-header {
 
 .unit-tower-dark {
   width: 84px;
-  height: 235px;
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  height: 230px;
+  background: linear-gradient(180deg, #1e293b, #0f172a);
   padding-top: 24px;
   text-align: center;
 }
 
 .unit-tower-light {
   width: 88px;
-  height: 235px;
-  background: linear-gradient(180deg, #ffffff 0%, #dbeafe 100%);
+  height: 230px;
+  background: linear-gradient(180deg, #fff, #dbeafe);
   padding-top: 24px;
   text-align: center;
 }
@@ -392,7 +329,6 @@ body.dark-mode .glass-header {
   letter-spacing: 3px;
 }
 
-/* 3 СТАТ ХЭСЭГ */
 .hero-stats-bar {
   max-width: 1320px;
   margin: 0 auto;
@@ -418,7 +354,6 @@ body.dark-mode .glass-header {
   display: block;
   font-size: 1.5rem;
   font-weight: 800;
-  line-height: 1.1;
 }
 
 .hero-stat span {
@@ -433,18 +368,20 @@ body.dark-mode .glass-header {
   background: rgba(255, 255, 255, 0.18);
 }
 
-/* БҮТЭЭГДЭХҮҮНИЙ ХЭСЭГ */
-.products-section {
+/* PRODUCTS */
+.products-section,
+.info-section,
+.order-section {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 40px 24px 72px;
+  padding: 36px 24px;
 }
 
 .products-header-row {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .section-badge {
@@ -455,17 +392,19 @@ body.dark-mode .glass-header {
   color: var(--badge-text);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
 
-.products-title-group h2 {
-  font-size: 2rem;
+.products-title-group h2,
+.section-center-head h2 {
+  font-size: 1.9rem;
   font-weight: 800;
   margin-bottom: 6px;
 }
 
-.products-title-group p {
+.products-title-group p,
+.section-center-head p,
+.muted-copy {
   font-size: 0.92rem;
   color: var(--text-muted);
 }
@@ -485,14 +424,12 @@ body.dark-mode .glass-header {
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-  transition: all 0.2s ease;
 }
 
 .filter-pill.is-active {
   background: var(--primary);
   border-color: var(--primary);
-  color: #ffffff;
+  color: #fff;
 }
 
 .cards-grid {
@@ -509,11 +446,6 @@ body.dark-mode .glass-header {
   box-shadow: var(--shadow-float);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease;
-}
-
-.item-card:hover {
-  transform: translateY(-5px);
 }
 
 .item-card.is-hidden {
@@ -544,7 +476,6 @@ body.dark-mode .glass-header {
   color: var(--text-muted);
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
 }
 
 .item-body {
@@ -583,7 +514,153 @@ body.dark-mode .glass-header {
   color: var(--primary);
 }
 
-/* БАРУУН ДООД ↑ ТОВЧ */
+/* ARTICLES & ABOUT */
+.info-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+.info-panel,
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-line);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-float);
+}
+
+.info-panel h3,
+.form-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.clean-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ORDER & CONTACT */
+.section-center-head {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.order-section .form-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.field-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field-box label {
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.field-box input,
+.field-box select,
+.field-box textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--border-line);
+  background: var(--bg-soft);
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-msg {
+  margin-top: 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-msg.ok {
+  color: #16a34a;
+}
+
+.form-msg.err {
+  color: #dc2626;
+}
+
+.contact-section {
+  background: linear-gradient(145deg, #0f172a, #16233b);
+  color: #fff;
+  padding: 52px 24px;
+  margin-top: 24px;
+}
+
+.contact-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.dark-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.contact-inner h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.contact-desc,
+.contact-meta {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+
+.site-footer {
+  background: #070e1a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.84rem;
+}
+
 .scroll-top-fab {
   position: fixed;
   right: 22px;
@@ -598,21 +675,17 @@ body.dark-mode .glass-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
   font-weight: 700;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
 }
 
-/* RESPONSIVE BREAKPOINTS */
 @media (min-width: 768px) {
   .hero-content {
     grid-template-columns: 1.05fr 1fr;
-    padding: 20px 32px 44px;
   }
 
   .hero-stats-bar {
     grid-template-columns: 1fr auto 1fr auto 1fr;
-    padding: 20px 32px 26px;
   }
 
   .stat-sep {
@@ -620,6 +693,12 @@ body.dark-mode .glass-header {
   }
 
   .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .info-grid-2,
+  .contact-inner,
+  .form-grid-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
