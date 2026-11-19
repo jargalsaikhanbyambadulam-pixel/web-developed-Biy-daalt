@@ -7,70 +7,99 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="ambient-layer" aria-hidden="true">
-    <span class="glow glow-a"></span>
-    <span class="glow glow-b"></span>
-  </div>
-
-  <div class="app-shell">
+  <div class="site-wrapper">
     <!-- ХӨВӨГЧ HEADER -->
-    <header class="floating-header">
-      <div class="header-container">
-        <a href="#hero" class="brand-box">
-          <span class="brand-drop" aria-hidden="true">💧</span>
-          <span class="brand-meta">
+    <header class="glass-header">
+      <div class="header-inner">
+        <a href="#hero" class="brand-link">
+          <span class="brand-icon" aria-hidden="true">💧</span>
+          <span class="brand-text">
             <strong>Билэг ус</strong>
             <small>Цэвэр усаа хайрлая!</small>
           </span>
         </a>
 
-        <nav class="nav-menu" aria-label="Үндсэн цэс">
-          <a href="#hero" class="nav-item active">Нүүр</a>
-          <a href="#products" class="nav-item">Бүтээгдэхүүн</a>
-          <a href="#articles" class="nav-item">Нийтлэл</a>
-          <a href="#about" class="nav-item">Бидний тухай</a>
-          <a href="#order-section" class="nav-item nav-pill-btn">Захиалга өгөх</a>
-          <a href="#contact" class="nav-item">Холбоо барих</a>
+        <nav class="nav-links" aria-label="Үндсэн цэс">
+          <a href="#hero" class="nav-a is-active">🏠 Нүүр</a>
+          <a href="#products" class="nav-a">🛒 Бүтээгдэхүүн ▾</a>
+          <a href="#articles" class="nav-a">📄 Нийтлэл</a>
+          <a href="#about" class="nav-a">👥 Бидний тухай</a>
+          <a href="#order-section" class="nav-a nav-cta">📋 Захиалга өгөх</a>
+          <a href="#contact" class="nav-a">📞 Холбоо барих</a>
         </nav>
 
         <button
           type="button"
           id="themeToggle"
-          class="mode-switch"
+          class="dark-pill"
           aria-label="Dark Mode солих"
           aria-pressed="false"
         >
-          <span class="mode-icon" aria-hidden="true">🌙</span>
-          <span class="mode-text">Dark Mode</span>
+          <span class="dark-dot" aria-hidden="true"></span>
+          <span class="dark-label">Dark</span>
         </button>
       </div>
     </header>
 
     <!-- HERO ХЭСЭГ -->
-    <section id="hero" class="hero-card-wrap">
-      <div class="hero-surface">
-        <span class="hero-badge">✦ Солонгос технологи • Монгол зах зээл</span>
-        <h1>Цэвэр ус — эрүүл амьдрал</h1>
-        <p class="hero-lead">
-          Бүх төрлийн ус цэвэршүүлэгч, шүүлтүүр болон автомат бидэ суултуурыг
-          БНСУ-аас шууд нийлүүлнэ. Хүргэлт, суурилуулалт үнэгүй.
-        </p>
-
-        <div class="hero-btns">
-          <a href="#products" class="btn-solid">🛒 Бүтээгдэхүүн үзэх</a>
-          <a href="#contact" class="btn-glass">📞 Холбоо барих</a>
+    <section id="hero" class="hero-section">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="hero-tag">🌐 Солонгос технологи • Монгол зах зээл</span>
+          <h1>Цэвэр ус —<br />эрүүл амьдрал</h1>
+          <p class="hero-desc">
+            Бүх төрлийн ус цэвэршүүлэгч, шүүлтүүр болон автомат бидэ суултуурыг
+            БНСУ-аас шууд нийлүүлнэ. Хүргэлт, суурилуулалт үнэгүй.
+          </p>
+          <div class="hero-actions">
+            <a href="#products" class="btn-white">🛒 Бүтээгдэхүүн үзэх →</a>
+            <a href="#contact" class="btn-outline">📞 Холбоо барих</a>
+          </div>
         </div>
 
-        <div class="hero-metrics">
-          <div class="metric-box">
+        <div class="hero-art" aria-hidden="true">
+          <div class="water-aura"></div>
+          <div class="showcase-units">
+            <div class="cartridges">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="unit-box unit-center">
+              <div class="unit-oled">WaterCare</div>
+              <div class="unit-spout"></div>
+            </div>
+            <div class="unit-box unit-tall-dark">
+              <div class="unit-dots">•••</div>
+            </div>
+            <div class="unit-box unit-tall-white">
+              <div class="unit-dots">•••</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-item">
+          <span class="stat-emoji" aria-hidden="true">💎</span>
+          <div>
             <strong>14+</strong>
             <span>Жилийн туршлага</span>
           </div>
-          <div class="metric-box">
+        </div>
+        <span class="stat-line" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-emoji" aria-hidden="true">🏢</span>
+          <div>
             <strong>500+</strong>
             <span>Байгууллага харилцагч</span>
           </div>
-          <div class="metric-box">
+        </div>
+        <span class="stat-line" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-emoji" aria-hidden="true">🛡️</span>
+          <div>
             <strong>4</strong>
             <span>Бүтээгдэхүүний ангилал</span>
           </div>
@@ -78,109 +107,205 @@
       </div>
     </section>
 
-    <!-- БҮТЭЭГДЭХҮҮНИЙ ХЭСЭГ -->
-    <main id="products" class="section-wrap">
-      <div class="section-top-bar">
+    <!-- БҮТЭЭГДЭХҮҮНИЙ ХЭСЭГ (ҮНЭТЭЙ КАРТУУД) -->
+    <main id="products" class="products-wrap">
+      <div class="products-head">
         <div>
-          <span class="eyebrow">БҮТЭЭГДЭХҮҮН</span>
+          <span class="badge-pill">БҮТЭЭГДЭХҮҮН</span>
           <h2>Манай бүтээгдэхүүнүүд</h2>
           <p>БНСУ-д үйлдвэрлэсэн Winix, WaterCare, AppleBidet брэндийн шилдэг бүтээгдэхүүнүүд</p>
         </div>
 
-        <div class="filter-group" role="group" aria-label="Ангилал шүүх">
-          <button type="button" class="filter-chip is-active" data-category="all">Бүгд</button>
-          <button type="button" class="filter-chip" data-category="purifier">Ус цэвэршүүлэгч</button>
-          <button type="button" class="filter-chip" data-category="filter">Шүүлтүүр</button>
-          <button type="button" class="filter-chip" data-category="bidet">Автомат суултуур</button>
-          <button type="button" class="filter-chip" data-category="air">Агаар цэвэршүүлэгч</button>
+        <div class="category-tabs" role="group" aria-label="Ангилал шүүх">
+          <button type="button" class="cat-tab is-active" data-category="all">Бүгд</button>
+          <button type="button" class="cat-tab" data-category="purifier">Ус цэвэршүүлэгч</button>
+          <button type="button" class="cat-tab" data-category="filter">Шүүлтүүр</button>
+          <button type="button" class="cat-tab" data-category="bidet">Автомат суултуур</button>
+          <button type="button" class="cat-tab" data-category="air">Агаар цэвэршүүлэгч</button>
         </div>
       </div>
 
-      <div class="catalog-grid">
+      <div class="product-cards-grid">
         <article
-          class="product-tile"
+          class="prod-card"
           data-category="air"
           data-order-type="Агаар цэвэршүүлэгч"
           data-title="Вирус вашер агаар цэвэршүүлэгч"
+          data-price="1,450,000₮"
           data-desc="99.97% цэвэршүүлэлт, вирус ариутгах, мөөгөнцөр устгах, чийгшүүлэх болон үнэргүйжүүлэх үйлдэлтэй."
         >
-          <div class="tile-media">
-            <button type="button" class="like-btn" aria-label="Хадгалах">♡</button>
-            <img src="https://placehold.co/600x420/e0f2fe/0369a1?text=Virus+Washer" alt="Вирус вашер агаар цэвэршүүлэгч" />
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0284c7?text=Virus+Washer" alt="Вирус вашер агаар цэвэршүүлэгч" />
           </div>
-          <div class="tile-body">
-            <span class="tile-cat">АГААР ЦЭВЭРШҮҮЛЭГЧ</span>
+          <div class="prod-content">
+            <span class="prod-cat">АГААР ЦЭВЭРШҮҮЛЭГЧ</span>
             <h3>Вирус вашер агаар цэвэршүүлэгч</h3>
             <p>99.97% цэвэршүүлэлт, вирус ариутгах болон чийгшүүлэх үйлдэлтэй.</p>
-            <div class="tile-footer">
-              <button type="button" class="detail-trigger">Дэлгэрэнгүй →</button>
-              <a href="#order-section" class="order-jump">Захиалах</a>
+            <div class="prod-price-row">
+              <strong class="prod-price">1,450,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
             </div>
           </div>
         </article>
 
         <article
-          class="product-tile"
+          class="prod-card"
           data-category="purifier"
           data-order-type="Ус цэвэршүүлэгч төхөөрөмж"
           data-title="DWP-220"
-          data-desc="БНСУ-ын APS technology брэндийн 1 цоргоор халуун, хүйтэн, бүлээн ус авах боломжтой, товч системтэй ус цэвэршүүлэгч. Хэмжээ: 22x46x48см, Багтаамж: халуун 1.5л, хүйтэн 3.8л."
+          data-price="1,210,000₮"
+          data-desc="1 цоргоор халуун, хүйтэн, бүлээн ус авах боломжтой, товч системтэй загвар. Хэмжээ: 22x46x48см, Багтаамж: халуун 1.5л, хүйтэн 3.8л."
         >
-          <div class="tile-media">
-            <button type="button" class="like-btn" aria-label="Хадгалах">♡</button>
-            <img src="https://placehold.co/600x420/e0f2fe/0284c7?text=DWP-220" alt="DWP-220 ус цэвэршүүлэгч" />
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0369a1?text=DWP-220" alt="DWP-220 ус цэвэршүүлэгч" />
           </div>
-          <div class="tile-body">
-            <span class="tile-cat">УС ЦЭВЭРШҮҮЛЭГЧ ТӨХӨӨРӨМЖ</span>
+          <div class="prod-content">
+            <span class="prod-cat">УС ЦЭВЭРШҮҮЛЭГЧ ТӨХӨӨРӨМЖ</span>
             <h3>DWP-220</h3>
             <p>Халуун, хүйтэн, бүлээн усны сонголттой, товч системтэй загвар.</p>
-            <div class="tile-footer">
-              <button type="button" class="detail-trigger">Дэлгэрэнгүй →</button>
-              <a href="#order-section" class="order-jump">Захиалах</a>
+            <div class="prod-price-row">
+              <strong class="prod-price">1,210,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
             </div>
           </div>
         </article>
 
         <article
-          class="product-tile"
+          class="prod-card"
           data-category="bidet"
           data-order-type="Бүрэн автомат бидэ суултуур"
           data-title="APPLEBIDET AB-K3814NF бүрэн автомат суултуур"
-          data-desc="Өргөн 44.2см, өндөр 16см, гүн 51.5см хэмжээтэй, эрүүл ахуй болон тав тухыг хангасан бүрэн автомат бидэ суултуур."
+          data-price="890,000₮"
+          data-desc="44.2см өргөн, 16см өндөр, 51.5см гүн бүхий орчин үеийн бүрэн автомат бидэ суултуур."
         >
-          <div class="tile-media">
-            <button type="button" class="like-btn" aria-label="Хадгалах">♡</button>
-            <img src="https://placehold.co/600x420/e0f2fe/0369a1?text=AppleBidet+AB-K3814NF" alt="APPLEBIDET AB-K3814NF" />
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0ea5e9?text=AppleBidet" alt="APPLEBIDET AB-K3814NF" />
           </div>
-          <div class="tile-body">
-            <span class="tile-cat">БҮРЭН АВТОМАТ БИДЭ СУУЛТУУР</span>
+          <div class="prod-content">
+            <span class="prod-cat">БҮРЭН АВТОМАТ БИДЭ СУУЛТУУР</span>
             <h3>APPLEBIDET AB-K3814NF бүрэн автомат суултуур</h3>
             <p>44.2см өргөн, 16см өндөр, 51.5см гүн бүхий орчин үеийн автомат суултуур.</p>
-            <div class="tile-footer">
-              <button type="button" class="detail-trigger">Дэлгэрэнгүй →</button>
-              <a href="#order-section" class="order-jump">Захиалах</a>
+            <div class="prod-price-row">
+              <strong class="prod-price">890,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
             </div>
           </div>
         </article>
 
         <article
-          class="product-tile"
+          class="prod-card"
           data-category="filter"
           data-order-type="Шүүлтүүр солих / суурилуулах"
-          data-title="Цорогт ус цэвэршүүлэгч ба шүүлтүүр"
-          data-desc="Олон шатлалт шүүлтүүрээр усыг гүн цэвэршүүлж, зэв, механик хольц болон бохирдлыг шүүнэ."
+          data-title="Цорогт ус цэвэршүүлэгч"
+          data-price="360,000₮"
+          data-desc="Олон шатлалт шүүлтүүрээр усыг гүн цэвэршүүлж, зэв болон бохирдлыг шүүнэ."
         >
-          <div class="tile-media">
-            <button type="button" class="like-btn" aria-label="Хадгалах">♡</button>
-            <img src="https://placehold.co/600x420/e0f2fe/0284c7?text=Water+Filter" alt="Цорогт ус цэвэршүүлэгч" />
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0284c7?text=Water+Filter" alt="Цорогт ус цэвэршүүлэгч" />
           </div>
-          <div class="tile-body">
-            <span class="tile-cat">ШҮҮЛТҮҮР</span>
+          <div class="prod-content">
+            <span class="prod-cat">ШҮҮЛТҮҮР</span>
             <h3>Цорогт ус цэвэршүүлэгч</h3>
             <p>Олон шатлалт шүүлтүүрээр усыг гүн цэвэршүүлж, зэв болон бохирдлыг шүүнэ.</p>
-            <div class="tile-footer">
-              <button type="button" class="detail-trigger">Дэлгэрэнгүй →</button>
-              <a href="#order-section" class="order-jump">Захиалах</a>
+            <div class="prod-price-row">
+              <strong class="prod-price">360,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="prod-card"
+          data-category="purifier"
+          data-order-type="Ус цэвэршүүлэгч төхөөрөмж"
+          data-title="WaterCare DWP-817S"
+          data-price="1,680,000₮"
+          data-desc="Халуун 2л, хүйтэн 3.8л багтаамжтай, 30x36.5x111.5см хэмжээтэй цэвэр усны төхөөрөмж."
+        >
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0369a1?text=DWP-817S" alt="WaterCare DWP-817S" />
+          </div>
+          <div class="prod-content">
+            <span class="prod-cat">УС ЦЭВЭРШҮҮЛЭГЧ ТӨХӨӨРӨМЖ</span>
+            <h3>WaterCare DWP-817S</h3>
+            <p>Халуун 2л, хүйтэн 3.8л багтаамжтай, загварлаг босоо ус цэвэршүүлэгч.</p>
+            <div class="prod-price-row">
+              <strong class="prod-price">1,680,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="prod-card"
+          data-category="filter"
+          data-order-type="Шүүлтүүр солих / суурилуулах"
+          data-title="Угаалгын машин, кофены машины шүүлтүүр"
+          data-price="95,000₮"
+          data-desc="Төвийн шугамаас ирэх зэв, механик хольц болон шохойжилтоос хамгаална."
+        >
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0284c7?text=Inline+Filter" alt="Угаалгын машины шүүлтүүр" />
+          </div>
+          <div class="prod-content">
+            <span class="prod-cat">ШҮҮЛТҮҮР</span>
+            <h3>Угаалгын машины усны шүүлтүүр</h3>
+            <p>Зэв болон механик хольцоос хамгаалж, төхөөрөмжийн ашиглалтыг уртасгана.</p>
+            <div class="prod-price-row">
+              <strong class="prod-price">95,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="prod-card"
+          data-category="bidet"
+          data-order-type="Бүрэн автомат бидэ суултуур"
+          data-title="APPLEBIDET AB-K9833"
+          data-price="1,120,000₮"
+          data-desc="Усны температур, суултуурын халаалт болон угаах горимын ухаалаг тохиргоотой."
+        >
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0ea5e9?text=AB-K9833" alt="APPLEBIDET AB-K9833" />
+          </div>
+          <div class="prod-content">
+            <span class="prod-cat">БҮРЭН АВТОМАТ БИДЭ СУУЛТУУР</span>
+            <h3>APPLEBIDET AB-K9833</h3>
+            <p>Халаалт, угаах болон хатаах горимтой орчин үеийн автомат суултуур.</p>
+            <div class="prod-price-row">
+              <strong class="prod-price">1,120,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="prod-card"
+          data-category="purifier"
+          data-order-type="Ус цэвэршүүлэгч төхөөрөмж"
+          data-title="Winix PQ-1000 / PQ-1000s"
+          data-price="1,540,000₮"
+          data-desc="Өрхийн болон албан тасалгааны хэрэглээнд тохиромжтой, найдвартай ажиллагаатай загвар."
+        >
+          <div class="prod-img-box">
+            <button type="button" class="fav-btn" aria-label="Хадгалах">♡</button>
+            <img src="https://placehold.co/600x420/f8fafc/0369a1?text=Winix+PQ-1000" alt="Winix PQ-1000" />
+          </div>
+          <div class="prod-content">
+            <span class="prod-cat">УС ЦЭВЭРШҮҮЛЭГЧ ТӨХӨӨРӨМЖ</span>
+            <h3>Winix PQ-1000; PQ-1000s</h3>
+            <p>Цэвэр усны багтаамж болон энгийн удирдлагатай найдвартай загвар.</p>
+            <div class="prod-price-row">
+              <strong class="prod-price">1,540,000₮</strong>
+              <button type="button" class="prod-more">Дэлгэрэнгүй →</button>
             </div>
           </div>
         </article>
@@ -188,77 +313,52 @@
     </main>
 
     <!-- НИЙТЛЭЛ БА БИДНИЙ ТУХАЙ -->
-    <section id="articles" class="section-wrap">
-      <div class="section-center">
-        <span class="eyebrow">НИЙТЛЭЛ &amp; ЗӨВЛӨГӨӨ</span>
-        <h2>Ус цэвэршүүлэлт, эрүүл ахуйн мэдээлэл</h2>
-      </div>
+    <section id="articles" class="sub-section">
+      <div class="sub-grid">
+        <div class="info-box">
+          <span class="badge-pill">НИЙТЛЭЛ</span>
+          <h3>Ус цэвэршүүлэлтийн зөвлөгөө</h3>
+          <ul class="article-list">
+            <li><strong>2021.01.24</strong> — Угаалгын машины механик гэмтэл гарахаас сэргийлнэ</li>
+            <li><strong>2021.01.24</strong> — WINIX Ts-100; Ts-100s загвар</li>
+            <li><strong>2018.01.29</strong> — Зэвтэй ус эрүүл мэндэд сөргөөр нөлөөлөх эрсдэл</li>
+          </ul>
+        </div>
 
-      <div class="articles-grid">
-        <article class="article-tile">
-          <img src="https://placehold.co/600x360/0284c7/ffffff?text=2021.01.24" alt="Угаалгын машины шүүлтүүр" />
-          <div class="article-content">
-            <time datetime="2021-01-24">2021.01.24</time>
-            <h3>Угаалгын машины механик гэмтэл гарахаас сэргийлнэ</h3>
-            <a href="#order-section" class="text-link">Унших →</a>
-          </div>
-        </article>
-
-        <article class="article-tile">
-          <img src="https://placehold.co/600x360/0369a1/ffffff?text=WINIX+Ts-100" alt="WINIX Ts-100 загвар" />
-          <div class="article-content">
-            <time datetime="2021-01-24">2021.01.24</time>
-            <h3>WINIX Ts-100; Ts-100s загвар</h3>
-            <a href="#order-section" class="text-link">Унших →</a>
-          </div>
-        </article>
-
-        <article class="article-tile">
-          <img src="https://placehold.co/600x360/0f172a/ffffff?text=2018.01.29" alt="Зэвтэй усны эрсдэл" />
-          <div class="article-content">
-            <time datetime="2018-01-29">2018.01.29</time>
-            <h3>Зэвтэй ус эрүүл мэндэд сөргөөр нөлөөлөх эрсдэл</h3>
-            <a href="#order-section" class="text-link">Унших →</a>
-          </div>
-        </article>
-      </div>
-
-      <div id="about" class="about-banner">
-        <div>
-          <span class="eyebrow">БИДНИЙ ТУХАЙ</span>
+        <div id="about" class="info-box">
+          <span class="badge-pill">БИДНИЙ ТУХАЙ</span>
           <h3>Билэг ус • Скай Импекс ХХК</h3>
           <p>
             БНСУ-аас бүх төрлийн ус цэвэршүүлэх төхөөрөмж, шүүлтүүр, автомат суултуурыг
             Монголын зах зээлд 14 гаруй жилийн туршлагатайгаар нийлүүлж байна. Хүргэлт, суурилуулалт үнэгүй.
           </p>
         </div>
-        <a href="tel:99186600" class="btn-solid">📞 99186600 залгах</a>
       </div>
     </section>
 
-    <!-- ЗАХИАЛГА ӨГӨХ ХЭСЭГ -->
-    <section id="order-section" class="section-wrap">
-      <div class="section-center">
-        <span class="eyebrow">ШУУРХАЙ ЗАХИАЛГА</span>
+    <!-- ЗАХИАЛГА ӨГӨХ -->
+    <section id="order-section" class="sub-section">
+      <div class="center-head">
+        <span class="badge-pill">ШУУРХАЙ ЗАХИАЛГА</span>
         <h2>Захиалга өгөх</h2>
         <p>Мэдээллээ бөглөн илгээгээрэй. Бид ажлын 24 цагийн дотор холбоо барина.</p>
       </div>
 
-      <div class="glass-card form-box-narrow">
+      <div class="form-panel">
         <form id="orderForm" novalidate>
-          <div class="grid-2">
-            <div class="input-group">
+          <div class="two-col">
+            <div class="form-field">
               <label for="orderName">НЭР *</label>
               <input type="text" id="orderName" placeholder="Таны нэр" />
             </div>
-            <div class="input-group">
+            <div class="form-field">
               <label for="orderPhone">УТАС *</label>
               <input type="tel" id="orderPhone" placeholder="99XXXXXX" />
             </div>
           </div>
 
-          <div class="grid-2">
-            <div class="input-group">
+          <div class="two-col">
+            <div class="form-field">
               <label for="orderType">ЗАХИАЛГЫН ТӨРӨЛ *</label>
               <select id="orderType">
                 <option value="">— Сонгоно уу —</option>
@@ -268,247 +368,82 @@
                 <option value="Агаар цэвэршүүлэгч">Агаар цэвэршүүлэгч</option>
               </select>
             </div>
-            <div class="input-group">
+            <div class="form-field">
               <label for="orderAddress">ХАЯГ</label>
               <input type="text" id="orderAddress" placeholder="Дүүрэг, хороо, байр, тоот" />
             </div>
           </div>
 
-          <button type="submit" class="btn-submit-full">Захиалга илгээх ➔</button>
-          <p id="orderFeedback" class="feedback-line" aria-live="polite"></p>
+          <button type="submit" class="btn-primary">Захиалга илгээх ➔</button>
+          <p id="orderFeedback" class="form-note" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <!-- ХОЛБОО БАРИХ ХЭСЭГ -->
-    <section id="contact" class="contact-dark-wrap">
-      <div class="contact-inner-grid">
+    <!-- ХОЛБОО БАРИХ -->
+    <section id="contact" class="contact-band">
+      <div class="contact-grid">
         <div>
-          <span class="dark-tag">ХОЛБОО БАРИХ</span>
+          <span class="contact-pill">ХОЛБОО БАРИХ</span>
           <h2>Бидэнтэй холбогдоорой</h2>
-          <p class="contact-copy">
+          <p class="contact-text">
             Бүтээгдэхүүн, үнэ болон суурилуулалтын талаар асуух зүйл байвал бидэнтэй холбогдоорой.
-            Бид танд туслахдаа баяртай байна.
           </p>
-
-          <div class="contact-row">
-            <span class="ico-circle" aria-hidden="true">📞</span>
-            <div>
-              <small>УТАС</small>
-              <strong>99186600 · 94956618</strong>
-            </div>
-          </div>
-
-          <div class="contact-row">
-            <span class="ico-circle" aria-hidden="true">📍</span>
-            <div>
-              <small>ХАЯГ</small>
-              <strong>ХУД, 120 мянгат, Цэнгэлдэх хотхон, 207-р байр 14 тоот</strong>
-            </div>
-          </div>
-
-          <div class="social-pills">
-            <a href="https://facebook.com" target="_blank" rel="noopener">f</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener">ig</a>
-          </div>
+          <p class="contact-info">📞 Утас: 99186600 · 94956618</p>
+          <p class="contact-info">📍 Хаяг: ХУД, 120 мянгат, Цэнгэлдэх хотхон, 207-р байр 14 тоот</p>
         </div>
 
-        <div class="contact-form-panel">
+        <div class="form-panel contact-form-box">
           <h3>Мессеж илгээх</h3>
           <form id="contactForm" novalidate>
-            <div class="grid-2">
-              <div class="input-group">
+            <div class="two-col">
+              <div class="form-field">
                 <label for="contactName">НЭР *</label>
                 <input type="text" id="contactName" placeholder="Таны нэр" />
               </div>
-              <div class="input-group">
+              <div class="form-field">
                 <label for="contactPhone">УТАС *</label>
                 <input type="tel" id="contactPhone" placeholder="99XXXXXX" />
               </div>
             </div>
-            <div class="input-group">
+            <div class="form-field">
               <label for="contactEmail">И-МЭЙЛ *</label>
               <input type="email" id="contactEmail" placeholder="email@example.com" />
             </div>
-            <div class="input-group">
+            <div class="form-field">
               <label for="contactMessage">МЕССЕЖ *</label>
               <textarea id="contactMessage" rows="3" placeholder="Таны асуулт эсвэл санал..."></textarea>
             </div>
-            <button type="submit" class="btn-submit-full">Илгээх ➔</button>
-            <p id="contactFeedback" class="feedback-line" aria-live="polite"></p>
+            <button type="submit" class="btn-primary">Илгээх ➔</button>
+            <p id="contactFeedback" class="form-note" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
 
-    <footer class="footer-bar">
+    <footer class="foot-bar">
       <p>© 2026 Билэг ус. Бүх эрх хамгаалагдсан.</p>
     </footer>
 
-    <!-- ДЭЭШ БУЦАХ ТОВЧ -->
-    <a href="#hero" class="fab-up" aria-label="Дээш буцах">↑</a>
+    <!-- БАРУУН ДООД ↑ ТОВЧ -->
+    <a href="#hero" class="up-fab" aria-label="Дээш буцах">↑</a>
 
-    <!-- БҮТЭЭГДЭХҮҮНИЙ ДЭЛГЭРЭНГҮЙ MODAL -->
-    <div id="productModal" class="modal-backdrop" hidden>
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button type="button" id="closeModalBtn" class="modal-close" aria-label="Хаах">✕</button>
-        <span id="modalCat" class="tile-cat">АНГИЛАЛ</span>
-        <h3 id="modalTitle">Бүтээгдэхүүн</h3>
-        <p id="modalDesc">Дэлгэрэнгүй тайлбар...</p>
-        <div class="modal-actions">
-          <a href="#order-section" id="modalOrderBtn" class="btn-solid">Захиалга өгөх →</a>
-        </div>
+    <!-- ДЭЛГЭРЭНГҮЙ MODAL -->
+    <div id="infoModal" class="modal-overlay" hidden>
+      <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+        <button type="button" id="closeInfoModal" class="modal-x" aria-label="Хаах">✕</button>
+        <span id="mCat" class="prod-cat">АНГИЛАЛ</span>
+        <h3 id="mTitle">Бүтээгдэхүүн</h3>
+        <strong id="mPrice" class="prod-price">0₮</strong>
+        <p id="mDesc">Тайлбар</p>
+        <a href="#order-section" id="mOrderLink" class="btn-primary">Захиалга өгөх →</a>
       </div>
     </div>
   </div>
 
-  <script>
-    (() => {
-      const THEME_KEY = "bileg_theme";
-      const toggleBtn = document.getElementById("themeToggle");
-
-      const applyTheme = (dark) => {
-        document.body.classList.toggle("dark-mode", dark);
-        if (toggleBtn) {
-          toggleBtn.setAttribute("aria-pressed", String(dark));
-          const icon = toggleBtn.querySelector(".mode-icon");
-          const text = toggleBtn.querySelector(".mode-text");
-          if (icon) icon.textContent = dark ? "☀️" : "🌙";
-          if (text) text.textContent = dark ? "Light Mode" : "Dark Mode";
-        }
-        try {
-          localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
-        } catch (_) {}
-      };
-
-      try {
-        if (localStorage.getItem(THEME_KEY) === "dark") {
-          applyTheme(true);
-        }
-      } catch (_) {}
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-          applyTheme(!document.body.classList.contains("dark-mode"));
-        });
-      }
-
-      // Ангилал шүүлтүүр
-      const chips = document.querySelectorAll(".filter-chip");
-      const tiles = document.querySelectorAll(".product-tile");
-      chips.forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const cat = chip.dataset.category || "all";
-          chips.forEach((c) => c.classList.remove("is-active"));
-          chip.classList.add("is-active");
-          tiles.forEach((tile) => {
-            const match = cat === "all" || tile.dataset.category === cat;
-            tile.classList.toggle("is-hidden", !match);
-          });
-        });
-      });
-
-      // Хадгалах (♡ / ♥)
-      document.querySelectorAll(".like-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const liked = btn.classList.toggle("liked");
-          btn.textContent = liked ? "♥" : "♡";
-        });
-      });
-
-      // Захиалах товч -> төрөл сонгох
-      const orderTypeSelect = document.getElementById("orderType");
-      document.querySelectorAll(".order-jump").forEach((link) => {
-        link.addEventListener("click", () => {
-          const tile = link.closest(".product-tile");
-          if (tile && orderTypeSelect && tile.dataset.orderType) {
-            orderTypeSelect.value = tile.dataset.orderType;
-          }
-        });
-      });
-
-      // Дэлгэрэнгүй modal
-      const modal = document.getElementById("productModal");
-      const closeModalBtn = document.getElementById("closeModalBtn");
-      const modalOrderBtn = document.getElementById("modalOrderBtn");
-      let activeOrderType = "";
-
-      document.querySelectorAll(".detail-trigger").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const tile = btn.closest(".product-tile");
-          if (!tile || !modal) return;
-          document.getElementById("modalCat").textContent = tile.querySelector(".tile-cat").textContent;
-          document.getElementById("modalTitle").textContent = tile.dataset.title || "";
-          document.getElementById("modalDesc").textContent = tile.dataset.desc || "";
-          activeOrderType = tile.dataset.orderType || "";
-          modal.hidden = false;
-        });
-      });
-
-      if (closeModalBtn && modal) {
-        closeModalBtn.addEventListener("click", () => {
-          modal.hidden = true;
-        });
-      }
-
-      if (modal) {
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) modal.hidden = true;
-        });
-      }
-
-      if (modalOrderBtn && modal) {
-        modalOrderBtn.addEventListener("click", () => {
-          if (orderTypeSelect && activeOrderType) {
-            orderTypeSelect.value = activeOrderType;
-          }
-          modal.hidden = true;
-        });
-      }
-
-      // Захиалгын форм
-      const orderForm = document.getElementById("orderForm");
-      if (orderForm) {
-        orderForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const name = (document.getElementById("orderName").value || "").trim();
-          const phone = (document.getElementById("orderPhone").value || "").trim();
-          const type = document.getElementById("orderType").value;
-          const fb = document.getElementById("orderFeedback");
-
-          if (name.length < 2 || !/^[0-9]{8}$/.test(phone) || !type) {
-            fb.textContent = "Нэр, 8 оронтой утас болон захиалгын төрлөө зөв бөглөнө үү.";
-            fb.className = "feedback-line error";
-            return;
-          }
-          fb.textContent = `Захиалга бүртгэгдлээ, ${name}! Бид ${phone} дугаарт холбогдоно.`;
-          fb.className = "feedback-line success";
-          orderForm.reset();
-        });
-      }
-
-      // Холбоо барих форм
-      const contactForm = document.getElementById("contactForm");
-      if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const name = (document.getElementById("contactName").value || "").trim();
-          const phone = (document.getElementById("contactPhone").value || "").trim();
-          const email = (document.getElementById("contactEmail").value || "").trim();
-          const msg = (document.getElementById("contactMessage").value || "").trim();
-          const fb = document.getElementById("contactFeedback");
-
-          if (name.length < 2 || !/^[0-9]{8}$/.test(phone) || !email.includes("@") || msg.length < 5) {
-            fb.textContent = "Талбаруудын мэдээллийг бүрэн зөв бөглөнө үү.";
-            fb.className = "feedback-line error";
-            return;
-          }
-          fb.textContent = `Баярлалаа, ${name}! Таны мессеж амжилттай илгээгдлээ.`;
-          fb.className = "feedback-line success";
-          contactForm.reset();
-        });
-      }
-    })();
-  </script>
+  <script src="js/lab9-experiments.js"></script>
+  <script src="js/algoritm.js"></script>
+  <script src="js/validators.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
