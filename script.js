@@ -1,44 +1,99 @@
-const products=[
- ['Вирус вашер агаар цэвэршүүлэгч','air','🌬️'],['DWP-220','water','💧'],
- ['APPLEBIDET AB-K3814NF','bidet','🚿'],['Хамгийн ИХ багтаамжтай','water','💧'],
- ['WaterCare DWP-817S','water','💧'],['Winix TS-200S','water','💧'],
- ['Housing шүүлтүүр','filter','🧪'],['Угаалгын машины шүүлтүүр','filter','🧪'],
- ['APPLEBIDET AB-K9833','bidet','🚿'],['Winix PQ-1000','water','💧'],
- ['Шүршүүрийн шүүлтүүр','filter','🧪'],['APPLEBIDET AB-K9823R','bidet','🚿']
-];
-const grid=document.getElementById('grid');
-products.forEach(([n,c,i],k)=>{
-  grid.insertAdjacentHTML('beforeend',`<article class="card" data-cat="${c}" style="--i:${k}" tabindex="0">
-   <div class="inner">
-    <div class="face"><span class="icon">${i}</span><div><h3>${n}</h3><small>Дэлгэрэнгүйг харах</small></div></div>
-    <div class="face back"><h3>${n}</h3><a href="https://www.bileg.us/products.php">Дэлгэрэнгүй</a></div>
-   </div></article>`);
-});
-document.getElementById('filters').addEventListener('click',e=>{
-  const b=e.target.closest('.chip'); if(!b)return;
-  document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));
-  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.cat!=='all'&&c.dataset.cat!==b.dataset.cat));
-});
-/* hamburger */
-const nav=document.getElementById('nav'),mb=document.getElementById('menuBtn');
-mb.onclick=()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)};
-nav.onclick=()=>nav.classList.remove('open');
-/* dark mode */
-const root=document.documentElement,tb=document.getElementById('themeBtn');
-const set=t=>{root.dataset.theme=t;tb.textContent=t==='dark'?'☀️':'🌙';try{localStorage.setItem('theme',t)}catch(e){}};
-let saved=null;try{saved=localStorage.getItem('theme')}catch(e){}
-set(saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
-tb.onclick=()=>set(root.dataset.theme==='dark'?'light':'dark');
-/* Lab 9: form validation */
-const checks={name:validateName,email:validateEmail,password:validatePassword,message:validateMessage};
-document.getElementById('form').addEventListener('submit',e=>{
-  e.preventDefault();let ok=true;
-  for(const id in checks){
-    const el=document.getElementById(id),msg=checks[id](el.value);
-    el.classList.toggle('bad',!!msg);el.nextElementSibling.textContent=msg;
-    if(msg)ok=false;
-  }
-  document.getElementById('ok').textContent=ok?'Баярлалаа! Таны хүсэлт хүлээн авагдлаа.':'';
-});
-/* Lab 9 даалгавар 1: турших код */
-console.table([{expr:'0.1+0.2',value:0.1+0.2},{expr:'typeof "a"',value:typeof 'a'},{expr:'typeof null',value:typeof null}]);
+(() => {
+  const THEME_KEY = "bileg_theme";
+
+  const syncThemeUI = (isDark) => {
+    document.body.classList.toggle("dark-mode", isDark);
+    const toggleBtn = document.getElementById("themeToggle");
+    if (toggleBtn) {
+      toggleBtn.setAttribute("aria-pressed", String(isDark));
+      const icon = toggleBtn.querySelector(".theme-icon");
+      const label = toggleBtn.querySelector(".theme-label");
+      if (icon) icon.textContent = isDark ? "☀️" : "🌙";
+      if (label) label.textContent = isDark ? "Light Mode" : "Dark Mode";
+    }
+  };
+
+  try {
+    if (localStorage.getItem(THEME_KEY) === "dark") {
+      syncThemeUI(true);
+    }
+  } catch (_) {}
+
+  document.addEventListener("click", (event) => {
+    // 1. Dark Mode товч (#themeToggle эсвэл .pill-toggle)
+    const themeBtn = event.target.closest("#themeToggle, .pill-toggle");
+    if (themeBtn) {
+      event.preventDefault();
+      const nextDark = !document.body.classList.contains("dark-mode");
+      syncThemeUI(nextDark);
+      try {
+        localStorage.setItem(THEME_KEY, nextDark ? "dark" : "light");
+      } catch (_) {}
+      return;
+    }
+
+    // 2. Ангиллын шүүлтүүр (.filter-pill эсвэл .cat-pill)
+    const filterBtn = event.target.closest(".filter-pill, .cat-pill");
+    if (filterBtn) {
+      const selectedCat = filterBtn.dataset.category || "all";
+      const allFilterBtns = document.querySelectorAll(".filter-pill, .cat-pill");
+      allFilterBtns.forEach((btn) => btn.classList.remove("is-active"));
+      filterBtn.classList.add("is-active");
+
+      const cards = document.querySelectorAll(".item-card, .product-card");
+      cards.forEach((card) => {
+        const cardCat = card.dataset.category || "";
+        const isMatch = selectedCat === "all" || cardCat === selectedCat;
+        card.classList.toggle("is-hidden", !isMatch);
+      });
+      return;
+    }
+
+    // 3. Зүрх / Хадгалах товч (.wish-btn)
+    const wishBtn = event.target.closest(".wish-btn");
+    if (wishBtn) {
+      event.preventDefault();
+      const liked = wishBtn.classList.toggle("is-liked");
+      wishBtn.textContent = liked ? "♥" : "♡";
+      wishBtn.style.color = liked ? "#ef4444" : "";
+      return;
+    }
+
+    // 4. "Дэлгэрэнгүй →" дарахад захиалгын төрөл автоматаар сонгох
+    const detailLink = event.target.closest(".select-product-link");
+    if (detailLink) {
+      const card = detailLink.closest(".item-card, .product-card");
+      const orderTypeEl = document.getElementById("orderType");
+      if (card && orderTypeEl && card.dataset.orderType) {
+        orderTypeEl.value = card.dataset.orderType;
+      }
+    }
+  });
+
+  // 5. Хэрэв хуудсанд orderForm / contactForm байвал алдаагүй ажиллуулах
+  document.addEventListener("DOMContentLoaded", () => {
+    const orderForm = document.getElementById("orderForm");
+    if (orderForm) {
+      orderForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const fb = document.getElementById("orderFeedback");
+        if (fb) {
+          fb.textContent = "Таны захиалгын мэдээлэл хүлээн авагдлаа.";
+          fb.className = "form-feedback success";
+        }
+      });
+    }
+
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const fb = document.getElementById("contactFeedback");
+        if (fb) {
+          fb.textContent = "Таны мессеж амжилттай илгээгдлээ.";
+          fb.className = "form-feedback success";
+        }
+      });
+    }
+  });
+})();
