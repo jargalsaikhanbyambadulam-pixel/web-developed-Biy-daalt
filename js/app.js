@@ -1,107 +1,550 @@
-// DARK / LIGHT MODE
-const themeToggle = document.getElementById("themeToggle");
 
-themeToggle.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
+// BILEG US WEBSITE INTERACTIONS
 
-    const isDark = document.body.classList.contains("dark-mode");
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 
-    themeToggle.querySelector(".theme-icon").textContent =
-        isDark ? "☀️" : "🌙";
 
-    themeToggle.querySelector(".theme-label").textContent =
-        isDark ? "Light Mode" : "Dark Mode";
+// ===================================
+// 1. LIGHT / DARK MODE
+// ===================================
+
+const themeToggle = $("#themeToggle");
+const themeIcon = $("#themeIcon");
+const themeText = $("#themeText");
+
+function setTheme(mode) {
+  document.body.classList.toggle("dark-mode", mode === "dark");
+
+  localStorage.setItem("bileg-theme", mode);
+
+  themeIcon.textContent = mode === "dark" ? "☾" : "☀";
+  themeText.textContent = mode === "dark" ? "Dark" : "Light";
+
+  themeToggle.setAttribute(
+    "aria-pressed",
+    String(mode === "dark")
+  );
+}
+
+setTheme(localStorage.getItem("bileg-theme") || "light");
+
+themeToggle.addEventListener("click", () => {
+  setTheme(
+    document.body.classList.contains("dark-mode")
+      ? "light"
+      : "dark"
+  );
 });
 
-// PRODUCT CATEGORY FILTER
-const categoryButtons = document.querySelectorAll(".cat-pill");
-const productCards = document.querySelectorAll(".product-card");
 
-categoryButtons.forEach(button => {
-    button.addEventListener("click", function () {
+// ===================================
+// 2. DESKTOP / MOBILE PREVIEW
+// ===================================
 
-        categoryButtons.forEach(btn => {
-            btn.classList.remove("is-active");
-        });
+const previewLabel = $("#previewLabel");
 
-        this.classList.add("is-active");
+let previewTimer;
 
-        const category = this.dataset.category;
+function showPreviewMessage(message) {
+  previewLabel.textContent = message;
+  previewLabel.classList.add("show");
 
-        productCards.forEach(card => {
-            if (category === "all" || card.dataset.category === category) {
-                card.classList.remove("is-hidden");
-            } else {
-                card.classList.add("is-hidden");
-            }
-        });
+  clearTimeout(previewTimer);
+
+  previewTimer = setTimeout(() => {
+    previewLabel.classList.remove("show");
+  }, 1700);
+}
+
+
+// Desktop preview
+$("#desktopPreview").addEventListener("click", () => {
+  document.body.classList.remove("preview-mobile");
+
+  showPreviewMessage("Компьютерийн харагдац");
+});
+
+
+// Mobile preview
+$("#mobilePreview").addEventListener("click", () => {
+  document.body.classList.add("preview-mobile");
+
+  showPreviewMessage("Утасны харагдац");
+});
+
+
+// ===================================
+// 3. WIREFRAME MODE
+// ===================================
+
+$("#wireframeToggle").addEventListener("click", (event) => {
+
+  const enabled =
+    document.body.classList.toggle("wireframe-mode");
+
+  event.currentTarget.classList.toggle("selected", enabled);
+
+  showPreviewMessage(
+    enabled
+      ? "Wireframe харагдац асаалттай"
+      : "Wireframe унтарлаа"
+  );
+
+});
+
+
+// ===================================
+// 4. MOBILE MENU
+// ===================================
+
+$("#menuToggle").addEventListener("click", () => {
+  $("#mainNav").classList.toggle("open");
+});
+
+
+// ===================================
+// 5. PRODUCT CATEGORY FILTER
+// ===================================
+
+$$(".category").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    $$(".category").forEach(item => {
+      item.classList.remove("active");
     });
-});
 
-// PRODUCT SELECT
-const productLinks = document.querySelectorAll(".select-product-link");
-const orderType = document.getElementById("orderType");
+    button.classList.add("active");
 
-productLinks.forEach(link => {
-    link.addEventListener("click", function () {
-        const card = this.closest(".product-card");
-        const category = card.dataset.category;
+    const selected = button.dataset.category;
 
-        const options = {
-            purifier: "Ус цэвэршүүлэгч төхөөрөмж",
-            filter: "Шүүлтүүр солих / суурилуулах",
-            bidet: "Автомат бидэ суултуур",
-            air: "Агаар цэвэршүүлэгч"
-        };
+    $$(".product-card").forEach(card => {
 
-        orderType.value = options[category] || "";
+      card.classList.toggle(
+        "hidden",
+        selected !== "all" &&
+        card.dataset.category !== selected
+      );
+
     });
+
+  });
+
 });
 
-// ORDER FORM
-const orderForm = document.getElementById("orderForm");
 
-orderForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+// ===================================
+// 6. SELECT PRODUCT FOR ORDER
+// ===================================
 
-    const name = document.getElementById("orderName").value.trim();
-    const phone = document.getElementById("orderPhone").value.trim();
-    const type = document.getElementById("orderType").value;
-    const feedback = document.getElementById("orderFeedback");
+$$(".product-link[data-product]").forEach(link => {
 
-    if (!name || !phone || !type) {
-        feedback.textContent = "Бүх шаардлагатай мэдээллийг бөглөнө үү!";
-        feedback.className = "form-feedback error";
-        return;
+  link.addEventListener("click", () => {
+
+    const product = link.dataset.product;
+
+    $("#orderType").value = product;
+
+  });
+
+});
+
+
+// ===================================
+// 7. FILTER DATE CALCULATOR
+// ===================================
+
+const filterStages = [1, 2, 3];
+
+
+// Add months to selected date
+function addMonths(dateString, months) {
+
+  const date = new Date(`${dateString}T12:00:00`);
+
+  const day = date.getDate();
+
+  date.setDate(1);
+
+  date.setMonth(date.getMonth() + months);
+
+  const lastDay = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0
+  ).getDate();
+
+  date.setDate(Math.min(day, lastDay));
+
+  return date;
+}
+
+
+// Format date
+function displayDate(date) {
+
+  return date.toLocaleDateString("mn-MN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+}
+
+
+// Calculate next replacement date
+function updateStage(id) {
+
+  const date = $(`#filterDate${id}`).value;
+
+  const months = Number(
+    $(`#filterMonth${id}`).value
+  );
+
+  const output = $(`#nextDate${id}`);
+
+  output.classList.remove("overdue");
+
+
+  if (
+    !date ||
+    !Number.isInteger(months) ||
+    months < 1 ||
+    months > 60
+  ) {
+
+    output.textContent =
+      "Огноо болон 1–60 сарын давтамж оруулна уу.";
+
+    return;
+  }
+
+
+  const next = addMonths(date, months);
+
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+
+  const due = new Date(next);
+
+  due.setHours(0, 0, 0, 0);
+
+  const days = Math.ceil(
+    (due - today) / 86400000
+  );
+
+
+  if (days < 0) {
+
+    output.textContent =
+      `⚠ Солих хугацаа ${Math.abs(days)} хоногоор хэтэрсэн · ${displayDate(next)}`;
+
+    output.classList.add("overdue");
+
+  }
+
+  else if (days === 0) {
+
+    output.textContent =
+      `● Өнөөдөр солих өдөр · ${displayDate(next)}`;
+
+  }
+
+  else {
+
+    output.textContent =
+      `Дараагийн солих огноо: ${displayDate(next)} · ${days} хоног үлдсэн`;
+
+  }
+
+}
+
+
+// Listen to date and month inputs
+filterStages.forEach(id => {
+
+  [
+    `#filterDate${id}`,
+    `#filterMonth${id}`
+
+  ].forEach(selector => {
+
+    $(selector).addEventListener("input", () => {
+      updateStage(id);
+    });
+
+  });
+
+});
+
+
+// ===================================
+// 8. RESTORE SAVED FILTER DATA
+// ===================================
+
+const savedFilterData = JSON.parse(
+  localStorage.getItem("bileg-filter-data") || "[]"
+);
+
+savedFilterData.forEach(item => {
+
+  if (filterStages.includes(item.id)) {
+
+    $(`#filterDate${item.id}`).value =
+      item.date || "";
+
+    $(`#filterMonth${item.id}`).value =
+      item.months || 1;
+
+    updateStage(item.id);
+
+  }
+
+});
+
+
+// ===================================
+// 9. SAVE FILTER INFORMATION
+// ===================================
+
+$("#saveFilterData").addEventListener("click", () => {
+
+  const data = [];
+
+  for (const id of filterStages) {
+
+    const date = $(`#filterDate${id}`).value;
+
+    const months = Number(
+      $(`#filterMonth${id}`).value
+    );
+
+
+    if (
+      !date ||
+      !Number.isInteger(months) ||
+      months < 1 ||
+      months > 60
+    ) {
+
+      $("#filterMessage").textContent =
+        `${id}-р шатны огноо болон давтамжийг зөв бөглөнө үү.`;
+
+      return;
     }
 
-    feedback.textContent = "Захиалгын мэдээлэл амжилттай шалгагдлаа!";
-    feedback.className = "form-feedback success";
 
-    orderForm.reset();
+    data.push({
+      id,
+      date,
+      months
+    });
+
+  }
+
+
+  localStorage.setItem(
+    "bileg-filter-data",
+    JSON.stringify(data)
+  );
+
+
+  $("#filterMessage").textContent =
+    "✓ Шүүлтүүрийн мэдээлэл энэ төхөөрөмжийн браузерт хадгалагдлаа.";
+
+  checkFilterNotifications();
+
 });
 
-// CONTACT FORM
-const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+// ===================================
+// 10. FILTER REPLACEMENT NOTIFICATION
+// ===================================
 
-    const name = document.getElementById("contactName").value.trim();
-    const phone = document.getElementById("contactPhone").value.trim();
-    const email = document.getElementById("contactEmail").value.trim();
-    const message = document.getElementById("contactMessage").value.trim();
+function checkFilterNotifications() {
 
-    const feedback = document.getElementById("contactFeedback");
+  const data = JSON.parse(
+    localStorage.getItem("bileg-filter-data") || "[]"
+  );
 
-    if (!name || !phone || !email || !message) {
-        feedback.textContent = "Мэдээллээ бүрэн бөглөнө үү!";
-        feedback.className = "form-feedback error";
-        return;
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+
+
+  data.forEach(item => {
+
+    const next = addMonths(
+      item.date,
+      item.months
+    );
+
+    const days = Math.ceil(
+      (next - today) / 86400000
+    );
+
+
+    if (
+      days <= 7 &&
+      days >= 0 &&
+      "Notification" in window &&
+      Notification.permission === "granted"
+    ) {
+
+      const key =
+        `bileg-notice-${item.id}-${next.toISOString().slice(0, 10)}`;
+
+
+      if (!localStorage.getItem(key)) {
+
+        new Notification(
+          "Билэг ус · Шүүлтүүрийн сануулга",
+          {
+            body:
+              `${item.id}-р шатны шүүлтүүр солиход ${days} хоног үлдлээ.`
+          }
+        );
+
+        localStorage.setItem(key, "sent");
+
+      }
+
     }
 
-    feedback.textContent = "Мессеж амжилттай шалгагдлаа!";
-    feedback.className = "form-feedback success";
+  });
 
-    contactForm.reset();
+}
+
+
+// Enable notifications button
+$("#enableNotifications").addEventListener("click", async () => {
+
+  if (!("Notification" in window)) {
+
+    $("#filterMessage").textContent =
+      "Таны браузер мэдэгдэл дэмжихгүй байна.";
+
+    return;
+  }
+
+
+  const permission =
+    await Notification.requestPermission();
+
+
+  $("#filterMessage").textContent =
+    permission === "granted"
+      ? "✓ Браузерын сануулга идэвхжлээ. Хугацаа ойртоход мэдэгдэл харуулна."
+      : "Мэдэгдлийн зөвшөөрөл олгогдоогүй байна.";
+
+
+  if (permission === "granted") {
+    checkFilterNotifications();
+  }
+
 });
+
+checkFilterNotifications();
+
+
+// ===================================
+// 11. ORDER FORM
+// ===================================
+
+$("#orderForm").addEventListener("submit", event => {
+
+  event.preventDefault();
+
+
+  const name = $("#orderName").value.trim();
+
+  const phone = $("#orderPhone").value.trim();
+
+  const product = $("#orderType").value;
+
+
+  if (!name || !phone || !product) {
+
+    $("#orderFeedback").textContent =
+      "Нэр, утас, бүтээгдэхүүнээ заавал бөглөнө үү.";
+
+    return;
+  }
+
+
+  const message = [
+
+    "Сайн байна уу. Билэг усны вебээс захиалга өгөх хүсэлтэй байна.",
+
+    `Нэр: ${name}`,
+
+    `Утас: ${phone}`,
+
+    `Бүтээгдэхүүн: ${product}`,
+
+    `Хаяг: ${$("#orderAddress").value.trim() || "Оруулаагүй"}`,
+
+    `Нэмэлт: ${$("#orderNote").value.trim() || "Байхгүй"}`
+
+  ].join("\n");
+
+
+  $("#orderFeedback").textContent =
+    "WhatsApp руу захиалгын мэдээллийг бэлтгэлээ. Илгээхээс өмнө мэдээллээ шалгана уу.";
+
+
+  window.open(
+    `https://wa.me/97699186600?text=${encodeURIComponent(message)}`,
+    "_blank",
+    "noopener"
+  );
+
+});
+
+
+// ===================================
+// 12. ACTIVE NAVIGATION
+// ===================================
+
+const sections = $$("main section[id]");
+
+const navLinks = $$(".nav-link");
+
+
+if ("IntersectionObserver" in window) {
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          navLinks.forEach(link => {
+
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") ===
+              `#${entry.target.id}`
+            );
+
+          });
+
+        }
+
+      });
+
+    },
+    {
+      rootMargin: "-35% 0px -55% 0px"
+    }
+  );
+
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+}

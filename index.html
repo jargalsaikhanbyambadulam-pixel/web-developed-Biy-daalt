@@ -1,482 +1,616 @@
+
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Билэг ус — Цэвэр ус, эрүүл амьдрал</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061b3b">
+  <title>Билэг ус | Цэвэр ус — эрүүл амьдрал</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+<div class="ambient" aria-hidden="true"></div>
 
-<div class="ambient-bg">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
-</div>
+<div class="site-shell" id="siteShell">
 
-<div class="page-wrapper">
+  <!-- HEADER -->
+  <header class="topbar">
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
+    <a class="brand" href="#home" aria-label="Билэг ус нүүр хуудас">
+      <span class="brand-mark">
+        <svg viewBox="0 0 48 58" role="img" aria-label="Усны дусал">
+          <defs>
+            <linearGradient id="drop" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#7eeaff"/>
+              <stop offset=".55" stop-color="#00a9f4"/>
+              <stop offset="1" stop-color="#0755bd"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 2C18 14 5 27 5 39a19 19 0 0 0 38 0C43 27 30 14 24 2Z"
+                fill="url(#drop)" stroke="#a7f2ff" stroke-width="2"/>
+          <path d="M15 39c1 7 6 11 13 11"
+                fill="none" stroke="#d8fbff" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </span>
 
-            <a href="#hero" class="brand">
-                <span class="brand-icon">💧</span>
-                <span class="brand-text">
-                    <strong>Билэг ус</strong>
-                    <small>Цэвэр усаа хайрлая!</small>
-                </span>
-            </a>
+      <span class="brand-copy">
+        <strong>Билэг ус</strong>
+        <small>Цэвэр усаа хайрлая!</small>
+      </span>
+    </a>
 
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="#hero" class="active">Нүүр</a></li>
-                    <li><a href="#products">Бүтээгдэхүүн</a></li>
-                    <li><a href="#articles">Нийтлэл</a></li>
-                    <li><a href="#about">Бидний тухай</a></li>
-                    <li><a href="#order-section" class="nav-cta">Захиалга өгөх</a></li>
-                    <li><a href="#contact">Холбоо барих</a></li>
-                </ul>
-            </nav>
+    <nav class="nav" id="mainNav" aria-label="Үндсэн цэс">
+      <a class="nav-link active" href="#home">⌂ <span>Нүүр</span></a>
+      <a class="nav-link" href="#products">▣ <span>Бүтээгдэхүүн</span></a>
+      <a class="nav-link" href="#articles">▤ <span>Нийтлэл</span></a>
+      <a class="nav-link" href="#about">♧ <span>Бидний тухай</span></a>
+      <a class="nav-link" href="#order">▦ <span>Захиалга өгөх</span></a>
+      <a class="nav-link" href="#contact">☎ <span>Холбоо барих</span></a>
+    </nav>
 
-            <button id="themeToggle" class="theme-toggle-btn" type="button">
-                <span class="theme-icon">🌙</span>
-                <span class="theme-label">Dark Mode</span>
-            </button>
+    <div class="toolbar">
 
-        </div>
-    </header>
+      <button class="tool-btn theme-btn" id="themeToggle"
+              type="button" aria-label="Өнгөний горим солих">
+        <span id="themeIcon">☀</span>
+        <span id="themeText">Light</span>
+      </button>
 
-    <!-- HERO -->
-    <section id="hero" class="hero-section">
-        <div class="hero-inner">
+      <span class="tool-divider"></span>
 
-            <span class="hero-pill">
-                ✦ Солонгос технологи • Монгол зах зээл
-            </span>
+      <button class="tool-btn device-btn" id="desktopPreview"
+              type="button" aria-label="Компьютерээр харах"
+              title="Компьютерээр харах">▣</button>
 
-            <h1>Цэвэр ус — эрүүл амьдрал</h1>
+      <button class="tool-btn device-btn" id="mobilePreview"
+              type="button" aria-label="Утсаар харах"
+              title="Утсаар харах">▯</button>
 
-            <p class="hero-desc">
-                Бүх төрлийн ус цэвэршүүлэгч, шүүлтүүр болон автомат бидэ
-                суултуурыг БНСУ-аас шууд нийлүүлнэ.
-                Хүргэлт, суурилуулалт үнэгүй.
-            </p>
+      <button class="tool-btn device-btn" id="wireframeToggle"
+              type="button" aria-label="Wireframe харах"
+              title="Wireframe харах">▦</button>
 
-            <div class="hero-actions">
-                <a href="#products" class="btn btn-light">Бүтээгдэхүүн үзэх</a>
-                <a href="#contact" class="btn btn-ghost">Холбоо барих</a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <strong>14+</strong>
-                    <span>Жилийн туршлага</span>
-                </div>
-
-                <div class="stat-item">
-                    <strong>500+</strong>
-                    <span>Байгууллага харилцагч</span>
-                </div>
-
-                <div class="stat-item">
-                    <strong>4</strong>
-                    <span>Бүтээгдэхүүний ангилал</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- MAIN -->
-    <div class="layout-container">
-
-        <main id="products" class="main-content">
-
-            <div class="section-heading">
-                <span class="tag">БҮТЭЭГДЭХҮҮН</span>
-                <h2>Манай бүтээгдэхүүнүүд</h2>
-                <p>
-                    БНСУ-д үйлдвэрлэсэн Winix, WaterCare,
-                    AppleBidet брэндийн бүтээгдэхүүнүүд
-                </p>
-            </div>
-
-            <!-- CATEGORY -->
-            <div class="category-bar">
-                <button class="cat-pill is-active" data-category="all">Бүгд</button>
-                <button class="cat-pill" data-category="purifier">Ус цэвэршүүлэгч</button>
-                <button class="cat-pill" data-category="filter">Шүүлтүүр</button>
-                <button class="cat-pill" data-category="bidet">Автомат суултуур</button>
-                <button class="cat-pill" data-category="air">Агаар цэвэршүүлэгч</button>
-            </div>
-
-            <!-- PRODUCTS -->
-            <div class="product-grid">
-
-                <article class="product-card" data-category="air">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0284c7/ffffff?text=Virus+Washer" alt="Агаар цэвэршүүлэгч">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">АГААР ЦЭВЭРШҮҮЛЭГЧ</span>
-                        <h3 class="card-title">Вирус вашер агаар цэвэршүүлэгч</h3>
-                        <p class="card-text">
-                            Агаар цэвэршүүлэх болон чийгшүүлэх үйлдэлтэй.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-                <article class="product-card" data-category="purifier">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0369a1/ffffff?text=DWP-220" alt="DWP-220">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">УС ЦЭВЭРШҮҮЛЭГЧ</span>
-                        <h3 class="card-title">DWP-220</h3>
-                        <p class="card-text">
-                            Халуун, хүйтэн, бүлээн усны сонголттой.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-                <article class="product-card" data-category="bidet">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=AppleBidet" alt="AppleBidet">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">АВТОМАТ БИДЭ</span>
-                        <h3 class="card-title">APPLEBIDET AB-K3814NF</h3>
-                        <p class="card-text">
-                            Орчин үеийн бүрэн автомат суултуур.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-                <article class="product-card" data-category="filter">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0284c7/ffffff?text=Water+Filter" alt="Усны шүүлтүүр">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">ШҮҮЛТҮҮР</span>
-                        <h3 class="card-title">Цоргоны усны шүүлтүүр</h3>
-                        <p class="card-text">
-                            Усны зэв болон бохирдлыг шүүх зориулалттай.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-                <article class="product-card" data-category="purifier">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0369a1/ffffff?text=WaterCare" alt="WaterCare">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">УС ЦЭВЭРШҮҮЛЭГЧ</span>
-                        <h3 class="card-title">WaterCare DWP-817S</h3>
-                        <p class="card-text">
-                            Гэр болон байгууллагад тохиромжтой загвар.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-                <article class="product-card" data-category="purifier">
-                    <div class="card-media">
-                        <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Winix+PQ1000" alt="Winix">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-cat">УС ЦЭВЭРШҮҮЛЭГЧ</span>
-                        <h3 class="card-title">Winix PQ-1000</h3>
-                        <p class="card-text">
-                            Найдвартай ажиллагаатай ус цэвэршүүлэгч.
-                        </p>
-                        <a href="#order-section" class="card-link select-product-link">
-                            Дэлгэрэнгүй →
-                        </a>
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- ARTICLES -->
-            <section id="articles" class="articles-block">
-
-                <div class="section-heading left-align">
-                    <h3>Нийтлэл & Зөвлөгөө</h3>
-                    <p>Ус цэвэршүүлэлт, эрүүл ахуйн талаарх мэдээлэл</p>
-                </div>
-
-                <div class="article-grid">
-
-                    <article class="article-card">
-                        <img src="https://placehold.co/600x380/0284c7/ffffff?text=Water+Filter" alt="Шүүлтүүр">
-                        <div class="article-body">
-                            <time>2021.01.24</time>
-                            <h4>Усны шүүлтүүрийн ач холбогдол</h4>
-                            <a href="#order-section" class="card-link">Унших →</a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <img src="https://placehold.co/600x380/0369a1/ffffff?text=WINIX" alt="Winix">
-                        <div class="article-body">
-                            <time>2021.01.24</time>
-                            <h4>WINIX бүтээгдэхүүний танилцуулга</h4>
-                            <a href="#order-section" class="card-link">Унших →</a>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <img src="https://placehold.co/600x380/0ea5e9/ffffff?text=Clean+Water" alt="Цэвэр ус">
-                        <div class="article-body">
-                            <time>2018.01.29</time>
-                            <h4>Цэвэр усны хэрэглээний ач холбогдол</h4>
-                            <a href="#order-section" class="card-link">Унших →</a>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-        </main>
-
-        <!-- SIDEBAR -->
-        <aside id="about" class="sidebar">
-
-            <div class="sidebar-card highlight">
-                <span class="mini-tag">БИДНИЙ ТУХАЙ</span>
-                <h3>Билэг ус • Скай Импекс ХХК</h3>
-                <p>
-                    БНСУ-аас ус цэвэршүүлэх төхөөрөмж,
-                    шүүлтүүр болон автомат суултуурыг Монголын
-                    зах зээлд нийлүүлж байна.
-                </p>
-                <div class="mini-badge">🇰🇷 Солонгос технологи</div>
-            </div>
-
-            <div class="sidebar-card">
-                <h3>Харилцагч байгууллагууд</h3>
-                <div class="client-tags">
-                    <span>НЗДТГ</span>
-                    <span>И-март</span>
-                    <span>Голомт банк</span>
-                    <span>Их дээд сургууль</span>
-                    <span>Эмнэлгүүд</span>
-                </div>
-            </div>
-
-            <div class="sidebar-card">
-                <h3>Шуурхай холбоо</h3>
-                <p>Хүргэлт, суурилуулалт үнэгүй.</p>
-                <a href="tel:99186600" class="btn btn-primary full-width">
-                    📞 99186600 залгах
-                </a>
-            </div>
-
-        </aside>
+      <button class="tool-btn menu-btn" id="menuToggle"
+              type="button" aria-label="Цэс нээх">☰</button>
 
     </div>
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+      <div class="hero-copy">
+
+        <span class="eyebrow">
+          <span class="flag">🇰🇷</span>
+          Солонгос технологи
+          <i></i>
+          Монгол зах зээл
+        </span>
+
+        <h1>
+          Цэвэр ус —
+          <br>
+          <span>эрүүл амьдрал</span>
+        </h1>
+
+        <div class="title-wave"></div>
+
+        <p>
+          Бүх төрлийн ус цэвэршүүлэгч, шүүлтүүр болон автомат
+          бидэ суултуурыг БНСУ-аас шууд нийлүүлнэ.
+          Хүргэлт, суурилуулалт үнэгүй.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">
+            🛒 Бүтээгдэхүүн үзэх <b>→</b>
+          </a>
+
+          <a class="btn btn-outline" href="#contact">
+            ☎ Холбоо барих
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="water-orbit orbit-one"></div>
+        <div class="water-orbit orbit-two"></div>
+
+        <div class="hero-leaf leaf-one">✦</div>
+        <div class="hero-leaf leaf-two">✧</div>
+
+        <img class="hero-filter"
+             src="assets/filter-cartridges.png"
+             alt="Гурван шатлалт усны шүүлтүүр">
+
+        <img class="hero-machine hero-machine-main"
+             src="assets/watercare-device.png"
+             alt="WaterCare ус цэвэршүүлэгч төхөөрөмж">
+
+        <img class="hero-machine hero-machine-dark"
+             src="assets/dwp-817s.png"
+             alt="WaterCare DWP-817S төхөөрөмж">
+
+        <span class="hero-caption">
+          Цэвэр усны ухаалаг шийдэл
+        </span>
+
+      </div>
+
+      <div class="hero-stats">
+
+        <div>
+          <span class="stat-icon">◇</span>
+          <strong>14+</strong>
+          <small>Жилийн туршлага</small>
+        </div>
+
+        <div>
+          <span class="stat-icon">▦</span>
+          <strong>500+</strong>
+          <small>Байгууллага харилцагч</small>
+        </div>
+
+        <div>
+          <span class="stat-icon">✓</span>
+          <strong>4</strong>
+          <small>Бүтээгдэхүүний ангилал</small>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products section-panel" id="products">
+
+      <div class="section-top">
+
+        <div>
+          <span class="section-tag">БҮТЭЭГДЭХҮҮН</span>
+          <h2>Манай бүтээгдэхүүнүүд</h2>
+          <p>Гэр болон байгууллагад зориулсан чанартай шийдлүүд</p>
+        </div>
+
+        <div class="category-list" role="group"
+             aria-label="Бүтээгдэхүүн шүүх">
+
+          <button class="category active" data-category="all">Бүгд</button>
+          <button class="category" data-category="purifier">Ус цэвэршүүлэгч</button>
+          <button class="category" data-category="filter">Шүүлтүүр</button>
+          <button class="category" data-category="bidet">Автомат бидэ</button>
+          <button class="category" data-category="air">Агаар цэвэршүүлэгч</button>
+
+        </div>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product-card" data-category="purifier">
+          <div class="product-image">
+            <span class="product-badge">WaterCare</span>
+            <img src="assets/watercare-device.png"
+                 alt="WaterCare ус цэвэршүүлэгч">
+          </div>
+          <div class="product-info">
+            <small>УС ЦЭВЭРШҮҮЛЭГЧ</small>
+            <h3>WaterCare төхөөрөмж</h3>
+            <p>Халуун, хүйтэн болон цэвэр усны сонголттой загвар.</p>
+            <a href="#order" class="product-link"
+               data-product="WaterCare төхөөрөмж">
+              Дэлгэрэнгүй / Захиалах →
+            </a>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="purifier">
+          <div class="product-image">
+            <span class="product-badge">DWP-817S</span>
+            <img src="assets/dwp-817s.png"
+                 alt="DWP-817S ус цэвэршүүлэгч">
+          </div>
+          <div class="product-info">
+            <small>УС ЦЭВЭРШҮҮЛЭГЧ</small>
+            <h3>WaterCare DWP-817S</h3>
+            <p>Хар болон цагаан өнгөний сонголттой төхөөрөмж.</p>
+            <a href="#order" class="product-link"
+               data-product="WaterCare DWP-817S">
+              Дэлгэрэнгүй / Захиалах →
+            </a>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="filter">
+          <div class="product-image">
+            <span class="product-badge">3 шатлал</span>
+            <img src="assets/filter-cartridges.png"
+                 alt="Гурван ширхэг усны шүүлтүүр">
+          </div>
+          <div class="product-info">
+            <small>ШҮҮЛТҮҮР</small>
+            <h3>3 шатлалт шүүлтүүр</h3>
+            <p>Төхөөрөмжийн загварт тохирсон шүүлтүүрийн багц.</p>
+            <a href="#maintenance" class="product-link">
+              Солих хугацаа харах →
+            </a>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="air">
+          <div class="product-image">
+            <span class="product-badge">Virus Washer</span>
+            <img src="assets/virus-washer.png"
+                 alt="Virus Washer төхөөрөмж">
+          </div>
+          <div class="product-info">
+            <small>АГААР ЦЭВЭРШҮҮЛЭГЧ</small>
+            <h3>Virus Washer</h3>
+            <p>Агаар цэвэршүүлэх, чийгшүүлэх зориулалттай төхөөрөмж.</p>
+            <a href="#order" class="product-link"
+               data-product="Virus Washer">
+              Дэлгэрэнгүй / Захиалах →
+            </a>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="bidet">
+          <div class="product-image">
+            <span class="product-badge">AppleBidet</span>
+            <img src="assets/apple-bidet.png"
+                 alt="AppleBidet автомат бидэ суултуур">
+          </div>
+          <div class="product-info">
+            <small>АВТОМАТ БИДЭ</small>
+            <h3>AppleBidet</h3>
+            <p>Орчин үеийн автомат ариун цэврийн төхөөрөмж.</p>
+            <a href="#order" class="product-link"
+               data-product="AppleBidet">
+              Дэлгэрэнгүй / Захиалах →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FILTER MAINTENANCE -->
+    <section class="maintenance section-panel" id="maintenance">
+
+      <div class="section-heading">
+        <span class="section-tag">FILTER CARE</span>
+        <h2>Шүүлтүүр солих сануулга</h2>
+        <p>
+          Шүүлтүүр тус бүрийн сольсон огноо болон дараагийн
+          солих хугацааг бүртгээрэй.
+        </p>
+      </div>
+
+      <div class="maintenance-layout">
+
+        <div class="filter-photo">
+          <img src="assets/filter-cartridges.png"
+               alt="Гурван шатлалт шүүлтүүр">
+          <div>
+            <strong>3 шатлалт систем</strong>
+            <span>Шүүлтүүрийн арчилгаагаа тогтмол хянаарай.</span>
+          </div>
+        </div>
+
+        <div class="filter-manager">
+
+          <div class="filter-stage">
+            <div class="stage-title">
+              <span>01</span>
+              <div>
+                <b>1-р шат</b>
+                <small>Эхний шүүлтүүр</small>
+              </div>
+            </div>
+
+            <label>
+              Сүүлд сольсон огноо
+              <input type="date" id="filterDate1">
+            </label>
+
+            <label>
+              Солих давтамж (сар)
+              <input type="number" min="1" max="60"
+                     value="1" id="filterMonth1">
+            </label>
+
+            <p class="due-date" id="nextDate1">
+              Огноо оруулаагүй
+            </p>
+          </div>
+
+          <div class="filter-stage">
+            <div class="stage-title">
+              <span>02</span>
+              <div>
+                <b>2-р шат</b>
+                <small>Хоёр дахь шүүлтүүр</small>
+              </div>
+            </div>
+
+            <label>
+              Сүүлд сольсон огноо
+              <input type="date" id="filterDate2">
+            </label>
+
+            <label>
+              Солих давтамж (сар)
+              <input type="number" min="1" max="60"
+                     value="1" id="filterMonth2">
+            </label>
+
+            <p class="due-date" id="nextDate2">
+              Огноо оруулаагүй
+            </p>
+          </div>
+
+          <div class="filter-stage">
+            <div class="stage-title">
+              <span>03</span>
+              <div>
+                <b>3-р шат</b>
+                <small>Гурав дахь шүүлтүүр</small>
+              </div>
+            </div>
+
+            <label>
+              Сүүлд сольсон огноо
+              <input type="date" id="filterDate3">
+            </label>
+
+            <label>
+              Солих давтамж (сар)
+              <input type="number" min="1" max="60"
+                     value="1" id="filterMonth3">
+            </label>
+
+            <p class="due-date" id="nextDate3">
+              Огноо оруулаагүй
+            </p>
+          </div>
+
+          <div class="maintenance-actions">
+            <button class="btn btn-primary" id="saveFilterData"
+                    type="button">
+              Мэдээлэл хадгалах
+            </button>
+
+            <button class="btn btn-soft" id="enableNotifications"
+                    type="button">
+              ♧ Сануулга идэвхжүүлэх
+            </button>
+          </div>
+
+          <p id="filterMessage" class="feedback" aria-live="polite"></p>
+
+          <p class="fine-print">
+            Солих давтамжийг тухайн төхөөрөмж, шүүлтүүрийн
+            үйлдвэрлэгчийн заавраар тохируулна уу.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section-panel" id="about">
+
+      <div>
+        <span class="section-tag">БИДНИЙ ТУХАЙ</span>
+
+        <h2>Цэвэр усны төлөөх найдвартай сонголт</h2>
+
+        <p>
+          Билэг ус нь БНСУ-ын ус цэвэршүүлэх төхөөрөмж,
+          шүүлтүүр болон автомат бидэ суултуурыг Монголын
+          хэрэглэгчдэд нийлүүлдэг. Төхөөрөмжийн сонголт,
+          суурилуулалт, арчилгааны талаар бидэнтэй холбогдоорой.
+        </p>
+
+        <div class="about-points">
+          <span>✓ Бүтээгдэхүүний зөвлөгөө</span>
+          <span>✓ Суурилуулалтын үйлчилгээ</span>
+          <span>✓ Шүүлтүүрийн арчилгааны сануулга</span>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <img src="assets/watercare-device.png"
+             alt="WaterCare төхөөрөмж">
+      </div>
+
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="articles section-panel" id="articles">
+
+      <div class="section-heading">
+        <span class="section-tag">МЭДЛЭГ & ЗӨВЛӨГӨӨ</span>
+        <h2>Цэвэр усны тухай</h2>
+        <p>Төхөөрөмжөө зөв арчлах нь урт хугацааны хэрэглээнд чухал.</p>
+      </div>
+
+      <div class="article-grid">
+
+        <article>
+          <span>01 / АРЧИЛГАА</span>
+          <h3>Шүүлтүүрээ хугацаанд нь солихын ач холбогдол</h3>
+          <p>
+            Шүүлтүүрийн солих хугацааг үйлдвэрлэгчийн заавар
+            болон хэрэглээний нөхцөлд тохируулна.
+          </p>
+        </article>
+
+        <article>
+          <span>02 / СОНГОЛТ</span>
+          <h3>Ус цэвэршүүлэгчээ хэрхэн сонгох вэ?</h3>
+          <p>
+            Гэр бүлийн хэрэглээ, усны хэрэглээ болон
+            төхөөрөмжийн багтаамжийг харгалзаарай.
+          </p>
+        </article>
+
+        <article>
+          <span>03 / ҮЙЛЧИЛГЭЭ</span>
+          <h3>Төхөөрөмжийн тогтмол үзлэг</h3>
+          <p>
+            Тогтмол арчилгаа, зөв суурилуулалт нь
+            төхөөрөмжийн ажиллагааг дэмжинэ.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location section-panel" id="location">
+
+      <div class="section-heading">
+        <span class="section-tag">БАЙРШИЛ</span>
+        <h2>Манай байршил</h2>
+        <p>ХУД, 120 мянгат, Цэнгэлдэх хотхон, 207-р байр, 14 тоот</p>
+      </div>
+
+      <div class="map-card">
+
+        <div>
+          <span class="map-pin">⌖</span>
+          <h3>Билэг ус — Скай Импекс ХХК</h3>
+          <p>Утас: 9918-6600, 9495-6618</p>
+
+          <a class="btn btn-primary"
+             href="https://www.google.com/maps/search/?api=1&query=120+myangat+Tsengeldekh+hotkhon+Ulaanbaatar"
+             target="_blank" rel="noopener">
+            Google Maps дээр нээх ↗
+          </a>
+        </div>
+
+        <iframe
+          title="Билэг усны байршил"
+          src="https://maps.google.com/maps?q=120%20myangat%2C%20Ulaanbaatar&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          loading="lazy">
+        </iframe>
+
+      </div>
+    </section>
 
     <!-- ORDER -->
-    <section id="order-section" class="order-section">
+    <section class="order section-panel" id="order">
 
-        <div class="section-heading">
-            <span class="tag">ШУУРХАЙ ЗАХИАЛГА</span>
-            <h2>Захиалга өгөх</h2>
-            <p>Мэдээллээ бөглөнө үү.</p>
-        </div>
+      <div class="section-heading">
+        <span class="section-tag">ЗАХИАЛГА</span>
+        <h2>Бүтээгдэхүүн захиалах</h2>
+        <p>Мэдээллээ үлдээгээрэй. Бид тантай холбогдоно.</p>
+      </div>
 
-        <div class="order-card">
+      <form class="order-form" id="orderForm">
 
-            <form id="orderForm" class="custom-form">
+        <label>
+          Таны нэр
+          <input id="orderName" required placeholder="Нэрээ бичнэ үү">
+        </label>
 
-                <div class="form-row-2">
-                    <div class="form-group">
-                        <label for="orderName">НЭР *</label>
-                        <input type="text" id="orderName" placeholder="Таны нэр" required>
-                    </div>
+        <label>
+          Утасны дугаар
+          <input id="orderPhone" required type="tel"
+                 placeholder="99xxxxxx">
+        </label>
 
-                    <div class="form-group">
-                        <label for="orderPhone">УТАС *</label>
-                        <input type="tel" id="orderPhone" placeholder="99XXXXXX" required>
-                    </div>
-                </div>
+        <label>
+          Бүтээгдэхүүн
+          <select id="orderType" required>
+            <option value="">Сонгох</option>
+            <option>WaterCare төхөөрөмж</option>
+            <option>WaterCare DWP-817S</option>
+            <option>3 шатлалт шүүлтүүр</option>
+            <option>Virus Washer</option>
+            <option>AppleBidet</option>
+          </select>
+        </label>
 
-                <div class="form-row-2">
-                    <div class="form-group">
-                        <label for="orderType">ЗАХИАЛГЫН ТӨРӨЛ *</label>
-                        <select id="orderType" required>
-                            <option value="">Сонгоно уу</option>
-                            <option>Ус цэвэршүүлэгч төхөөрөмж</option>
-                            <option>Шүүлтүүр солих / суурилуулах</option>
-                            <option>Автомат бидэ суултуур</option>
-                            <option>Агаар цэвэршүүлэгч</option>
-                        </select>
-                    </div>
+        <label>
+          Хаяг
+          <input id="orderAddress" placeholder="Дүүрэг, хороо, байр">
+        </label>
 
-                    <div class="form-group">
-                        <label for="paymentMethod">ТӨЛБӨРИЙН НӨХЦӨЛ</label>
-                        <select id="paymentMethod">
-                            <option>Бэлэн / Шилжүүлгээр</option>
-                            <option>Pocket / Storepay / LendMN</option>
-                            <option>Байгууллагын нэхэмжлэхээр</option>
-                        </select>
-                    </div>
-                </div>
+        <label class="wide">
+          Нэмэлт мэдээлэл
+          <textarea id="orderNote" rows="3"
+                    placeholder="Тайлбар бичих..."></textarea>
+        </label>
 
-                <div class="form-group">
-                    <label for="orderAddress">ХАЯГ</label>
-                    <input type="text" id="orderAddress" placeholder="Дүүрэг, хороо, байр">
-                </div>
+        <button class="btn btn-primary wide" type="submit">
+          Захиалгын мэдээлэл бэлтгэх →
+        </button>
 
-                <div class="form-group">
-                    <label for="orderNote">НЭМЭЛТ ТЭМДЭГЛЭЛ</label>
-                    <textarea id="orderNote" rows="3" placeholder="Нэмэлт мэдээлэл..."></textarea>
-                </div>
+        <p id="orderFeedback" class="feedback wide"
+           aria-live="polite"></p>
 
-                <button type="submit" class="btn btn-primary full-width btn-lg">
-                    Захиалга илгээх ➔
-                </button>
-
-                <p id="orderFeedback" class="form-feedback"></p>
-
-            </form>
-        </div>
+      </form>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact-dark-section">
+    <section class="contact" id="contact">
 
-        <div class="contact-grid">
+      <div>
+        <span class="section-tag">ХОЛБОО БАРИХ</span>
+        <h2>Танд туслахад бэлэн байна.</h2>
 
-            <div class="contact-info">
-                <span class="dark-pill">ХОЛБОО БАРИХ</span>
-                <h2>Бидэнтэй холбогдоорой</h2>
-                <p class="contact-lead">
-                    Бүтээгдэхүүн, үнэ болон суурилуулалтын талаар
-                    асуух зүйл байвал бидэнтэй холбогдоорой.
-                </p>
+        <p>
+          Бүтээгдэхүүн, үнэ, хүргэлт болон суурилуулалтын
+          талаар асуугаарай.
+        </p>
 
-                <div class="contact-items">
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <span class="item-label">УТАС</span>
-                            <strong>
-                                <a href="tel:99186600">99186600</a> ·
-                                <a href="tel:94956618">94956618</a>
-                            </strong>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <span class="item-label">ХАЯГ</span>
-                            <strong>ХУД, 120 мянгат, Цэнгэлдэх хотхон</strong>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="social-row">
-                    <a href="https://facebook.com" target="_blank">f</a>
-                    <a href="https://instagram.com" target="_blank">ig</a>
-                </div>
-            </div>
-
-            <div class="contact-form-card">
-                <h3>Мессеж илгээх</h3>
-
-                <form id="contactForm" class="custom-form">
-
-                    <div class="form-row-2">
-                        <div class="form-group">
-                            <label for="contactName">НЭР *</label>
-                            <input type="text" id="contactName" placeholder="Таны нэр" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contactPhone">УТАС *</label>
-                            <input type="tel" id="contactPhone" placeholder="99XXXXXX" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contactEmail">И-МЭЙЛ *</label>
-                        <input type="email" id="contactEmail" placeholder="email@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contactMessage">МЕССЕЖ *</label>
-                        <textarea id="contactMessage" rows="4" placeholder="Таны санал хүсэлт..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary full-width btn-lg">
-                        Илгээх ➔
-                    </button>
-
-                    <p id="contactFeedback" class="form-feedback"></p>
-
-                </form>
-            </div>
-
+        <div class="contact-lines">
+          <a href="tel:99186600">☎ 9918-6600</a>
+          <a href="tel:94956618">☎ 9495-6618</a>
+          <span>⌖ ХУД, 120 мянгат, Цэнгэлдэх хотхон</span>
         </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Шууд холбогдох</h3>
+        <p>Утасны дугаар дээр дарж бидэнтэй холбогдоорой.</p>
+        <a class="btn btn-primary" href="tel:99186600">Залгах</a>
+      </div>
+
     </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
+  </main>
 
-        <div class="footer-grid">
+  <!-- FOOTER -->
+  <footer class="footer">
 
-            <div class="footer-brand">
-                <strong>БИЛЭГ УС 💧</strong>
-                <p>Цэвэр ус — эрүүл амьдрал.</p>
-            </div>
+    <a class="brand" href="#home">
+      <span class="brand-mark">💧</span>
+      <span class="brand-copy">
+        <strong>Билэг ус</strong>
+        <small>Цэвэр усаа хайрлая!</small>
+      </span>
+    </a>
 
-            <div class="footer-col">
-                <h4>ЦЭС</h4>
-                <ul>
-                    <li><a href="#hero">Нүүр</a></li>
-                    <li><a href="#products">Бүтээгдэхүүн</a></li>
-                    <li><a href="#articles">Нийтлэл</a></li>
-                    <li><a href="#about">Бидний тухай</a></li>
-                </ul>
-            </div>
+    <span>© 2026 Билэг ус. Бүх эрх хамгаалагдсан.</span>
+    <a href="#home">Дээш буцах ↑</a>
 
-            <div class="footer-col">
-                <h4>ХОЛБОО БАРИХ</h4>
-                <ul>
-                    <li>Утас: 9918-6600</li>
-                    <li>Хүргэлт үнэгүй</li>
-                    <li>Улаанбаатар хот</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 Билэг ус. Бүх эрх хамгаалагдсан.
-        </div>
-
-    </footer>
+  </footer>
 
 </div>
+
+<div class="preview-label" id="previewLabel" aria-live="polite"></div>
 
 <script src="app.js"></script>
 </body>
